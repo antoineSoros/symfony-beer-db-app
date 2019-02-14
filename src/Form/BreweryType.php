@@ -2,28 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Beer;
+use App\Entity\Brewery;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BeerType extends AbstractType
+class BreweryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name')
-            ->add('brewery')
-            ->add('degree')
-            ->add('type')
-            ->add('ibu')
+            ->add('country')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Beer::class,
+            'data_class' => Brewery::class,
         ]);
     }
 }

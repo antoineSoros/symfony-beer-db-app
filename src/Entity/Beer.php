@@ -21,10 +21,6 @@ class Beer
      */
     private $name;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $brewery;
 
     /**
      * @ORM\Column(type="float")
@@ -35,6 +31,18 @@ class Beer
      * @ORM\Column(type="integer", nullable=true)
      */
     private $ibu;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Brewery", inversedBy="beers")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $brewery;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="beers")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
 
     public function getId(): ?int
     {
@@ -53,18 +61,7 @@ class Beer
         return $this;
     }
 
-    public function getBrewery(): ?string
-    {
-        return $this->brewery;
-    }
-
-    public function setBrewery(string $brewery): self
-    {
-        $this->brewery = $brewery;
-
-        return $this;
-    }
-
+ 
     public function getDegree(): ?float
     {
         return $this->degree;
@@ -85,6 +82,30 @@ class Beer
     public function setIbu(?int $ibu): self
     {
         $this->ibu = $ibu;
+
+        return $this;
+    }
+
+    public function getBrewery(): ?Brewery
+    {
+        return $this->brewery;
+    }
+
+    public function setBrewery(?Brewery $brewery): self
+    {
+        $this->brewery = $brewery;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
