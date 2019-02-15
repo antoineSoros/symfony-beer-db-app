@@ -3,41 +3,46 @@
 {% block title %}Beer index{% endblock %}
 
 {% block body %}
-    <h1>Beer index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Brewery</th>
-                 <th>Type</th>
-                <th>Degree</th>
-                <th>Ibu</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    
+    <div class="ui-header" style="margin-top: 5%;margin-bottom: 10%;font-size: 3rem;">BEER LIST</div>
+    <div class="ui cards ">
+        <div class="ui grid">
+            
         {% for beer in beers %}
-            <tr>
-                <td>{{ beer.id }}</td>
-                <td>{{ beer.name }}</td>
-                <td>{{ beer.brewery }}</td>
-                 <td>{{ beer.type}}</td>
-                <td>{{ beer.degree }}</td>
-                <td>{{ beer.ibu }}</td>
-                <td>
-                    <a href="{{ path('beer_show', {'id': beer.id}) }}">show</a>
-                    <a href="{{ path('beer_edit', {'id': beer.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+            <div class="threecolumn">
+                <div class="ui card raised  " style="margin: 2%;">
+            <div class="content">
+                <div class="ui-header">{{ beer.name }}</div>
+                <div class="meta">
+                    {{ beer.brewery }}
+                </div>
+                 <div class="extra content">
+      <div class="ui two buttons">
+        <a  class="ui purple button inverted" href="{{ path('beer_edit', {'id': beer.id}) }}">EDIT</a>
+         <div class="or"></div>
+        <a class="ui  pink button inverted" href="{{ path('beer_show', {'id': beer.id}) }}">SHOW</a>
+      </div>
+    </div>
+                
+            </div>
+        </div>
+      </div>
         {% endfor %}
-        </tbody>
-    </table>
+        
+        </div>
+    </div>
+        <a href="{{ path('beer_new') }}" class="ui  green button" style="margin-top: 5%">Create new</a>
+   
+    
+    
+    
+    
+    
+    
+    
+                  
+     
+      
 
-    <a href="{{ path('beer_new') }}">Create new</a>
+   
 {% endblock %}
