@@ -3,10 +3,42 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}<link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="semantic/dist/semantic.min.js"></script>{% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body style="background-color: activecaption">
+        <div class="ui tertiary segment  piled raised very padded ">
+            <div class="ui-header right  " style="font-size: 5rem;margin-top: 5%;margin-bottom: 2%">BEER TO BEER</div>
+        <div class="ui secondary pointing menu">
+        
+            <a class="item " href="{{ path('beer_index') }}">
+    BEERS
+  </a>
+  <a class="item" href="{{ path('brewery_index')}}">
+      BREWERIES
+  </a>
+  <a class="item" href="{{ path('type_index')}}">
+  TYPES
+  </a>
+
+    <a class="ui item" href="{{ path('country_index')}}">
+     COUNTRIES
+    </a>
+    
+  
+</div>
+        </div>
+<div class="ui tertiary segment piled raised">
+ 
+
+        {% block body %}
+            
+        {% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
